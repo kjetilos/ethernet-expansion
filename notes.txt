@@ -1,0 +1,5 @@
+Several board and schematics for this chip can be found online.
+
+Here is one that uses the DIP package. This is the simplest schematic I have found.
+
+http://www.micro-examples.com/pics/094-EP2-ETHERNET-schematic.png
