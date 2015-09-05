@@ -13584,8 +13584,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C1" library="resistor" deviceset="C-EU" device="C0805" value="10pF"/>
 <part name="C2" library="resistor" deviceset="C-EU" device="C0805" value="10pF"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
-<part name="R7" library="resistor" deviceset="R-EU_" device="M0805" value="10K"/>
-<part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
 <part name="C5" library="resistor" deviceset="C-EU" device="C0805" value="0.1uF"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="R9" library="resistor" deviceset="R-EU_" device="M0805" value="2.32K"/>
@@ -13631,8 +13629,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="C1" gate="G$1" x="50.8" y="45.72"/>
 <instance part="C2" gate="G$1" x="60.96" y="45.72"/>
 <instance part="GND4" gate="1" x="50.8" y="33.02"/>
-<instance part="R7" gate="G$1" x="0" y="88.9" rot="R90"/>
-<instance part="+3V3" gate="G$1" x="0" y="99.06"/>
 <instance part="C5" gate="G$1" x="38.1" y="93.98"/>
 <instance part="GND5" gate="1" x="38.1" y="86.36"/>
 <instance part="R9" gate="G$1" x="0" y="43.18" rot="R90"/>
@@ -13728,11 +13724,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="116.84" y1="96.52" x2="116.84" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="RJ1" gate="G$1" pin="P4"/>
 <wire x1="116.84" y1="66.04" x2="127" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R7" gate="G$1" pin="2"/>
-<pinref part="+3V3" gate="G$1" pin="+3V3"/>
-<wire x1="0" y1="93.98" x2="0" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="A" pin="20"/>
@@ -13965,12 +13956,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="-17.78" y1="76.2" x2="-17.78" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$16" class="0">
+<net name="ETH_RESET" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="RESET"/>
-<pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="2.54" y1="73.66" x2="0" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="0" y1="73.66" x2="0" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="73.66" x2="-15.24" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="73.66" x2="-15.24" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="55.88" x2="-35.56" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="-35.56" y1="55.88" x2="-35.56" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="A" pin="12"/>
+<wire x1="-35.56" y1="68.58" x2="-45.72" y2="68.58" width="0.1524" layer="91"/>
+<label x="-12.7" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$13" class="0">
