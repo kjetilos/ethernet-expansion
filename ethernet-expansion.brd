@@ -1552,7 +1552,7 @@ wide body 7.5 mm/JEDEC MO-119AB</description>
 <class number="0" name="default" width="0" drill="0">
 </class>
 </classes>
-<designrules name="LaenPCBOrder">
+<designrules name="SeeedStudio_2layer_DRU_no_angle_20140221">
 <description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
 Die Standard-Design-Rules sind so gewählt, dass sie für 
@@ -1560,29 +1560,35 @@ die meisten Anwendungen passen. Sollte ihre Platine
 besondere Anforderungen haben, treffen Sie die erforderlichen
 Einstellungen hier und speichern die Design Rules unter 
 einem neuen Namen ab.</description>
-<description language="en">&lt;b&gt;Laen's PCB Order Design Rules&lt;/b&gt;
+<description language="en">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
-Please make sure your boards conform to these design rules.</description>
+The default Design Rules have been set to cover
+a wide range of applications. Your particular design
+may have different requirements, so please make the
+necessary adjustments and save your customized
+design rules under a new name.</description>
+<description language="zh">&lt;b&gt;Seeed Studio EAGLE Design Rules&lt;/b&gt;
+</description>
 <param name="layerSetup" value="(1*16)"/>
-<param name="mtCopper" value="0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm"/>
-<param name="mtIsolate" value="1.5011mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm"/>
+<param name="mtCopper" value="0.035mm 0.0175mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.0175mm 0.035mm"/>
+<param name="mtIsolate" value="1.5mm 1.1mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
 <param name="mdWireWire" value="6mil"/>
 <param name="mdWirePad" value="6mil"/>
 <param name="mdWireVia" value="6mil"/>
 <param name="mdPadPad" value="6mil"/>
 <param name="mdPadVia" value="6mil"/>
 <param name="mdViaVia" value="6mil"/>
-<param name="mdSmdPad" value="6mil"/>
-<param name="mdSmdVia" value="6mil"/>
-<param name="mdSmdSmd" value="6mil"/>
+<param name="mdSmdPad" value="0mil"/>
+<param name="mdSmdVia" value="0mil"/>
+<param name="mdSmdSmd" value="0mil"/>
 <param name="mdViaViaSameLayer" value="8mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
-<param name="mdCopperDimension" value="15mil"/>
-<param name="mdDrill" value="6mil"/>
+<param name="mdCopperDimension" value="10mil"/>
+<param name="mdDrill" value="10mil"/>
 <param name="mdSmdStop" value="0mil"/>
 <param name="msWidth" value="6mil"/>
-<param name="msDrill" value="13mil"/>
-<param name="msMicroVia" value="13mil"/>
+<param name="msDrill" value="12mil"/>
+<param name="msMicroVia" value="12mil"/>
 <param name="msBlindViaRatio" value="0.5"/>
 <param name="rvPadTop" value="0.25"/>
 <param name="rvPadInner" value="0.25"/>
@@ -1591,15 +1597,15 @@ Please make sure your boards conform to these design rules.</description>
 <param name="rvViaInner" value="0.25"/>
 <param name="rvMicroViaOuter" value="0.25"/>
 <param name="rvMicroViaInner" value="0.25"/>
-<param name="rlMinPadTop" value="7mil"/>
+<param name="rlMinPadTop" value="10mil"/>
 <param name="rlMaxPadTop" value="20mil"/>
-<param name="rlMinPadInner" value="7mil"/>
+<param name="rlMinPadInner" value="10mil"/>
 <param name="rlMaxPadInner" value="20mil"/>
-<param name="rlMinPadBottom" value="7mil"/>
+<param name="rlMinPadBottom" value="10mil"/>
 <param name="rlMaxPadBottom" value="20mil"/>
-<param name="rlMinViaOuter" value="7mil"/>
+<param name="rlMinViaOuter" value="6mil"/>
 <param name="rlMaxViaOuter" value="20mil"/>
-<param name="rlMinViaInner" value="7mil"/>
+<param name="rlMinViaInner" value="6mil"/>
 <param name="rlMaxViaInner" value="20mil"/>
 <param name="rlMinMicroViaOuter" value="4mil"/>
 <param name="rlMaxMicroViaOuter" value="20mil"/>
@@ -1607,16 +1613,16 @@ Please make sure your boards conform to these design rules.</description>
 <param name="rlMaxMicroViaInner" value="20mil"/>
 <param name="psTop" value="-1"/>
 <param name="psBottom" value="-1"/>
-<param name="psFirst" value="-1"/>
+<param name="psFirst" value="0"/>
 <param name="psElongationLong" value="100"/>
 <param name="psElongationOffset" value="100"/>
 <param name="mvStopFrame" value="1"/>
 <param name="mvCreamFrame" value="0"/>
-<param name="mlMinStopFrame" value="3mil"/>
-<param name="mlMaxStopFrame" value="3mil"/>
+<param name="mlMinStopFrame" value="2mil"/>
+<param name="mlMaxStopFrame" value="2mil"/>
 <param name="mlMinCreamFrame" value="0mil"/>
 <param name="mlMaxCreamFrame" value="0mil"/>
-<param name="mlViaStopLimit" value="0mil"/>
+<param name="mlViaStopLimit" value="100mil"/>
 <param name="srRoundness" value="0"/>
 <param name="srMinRoundness" value="0mil"/>
 <param name="srMaxRoundness" value="0mil"/>
@@ -1627,7 +1633,7 @@ Please make sure your boards conform to these design rules.</description>
 <param name="checkGrid" value="0"/>
 <param name="checkAngle" value="0"/>
 <param name="checkFont" value="1"/>
-<param name="checkRestrict" value="1"/>
+<param name="checkRestrict" value="0"/>
 <param name="useDiameter" value="13"/>
 <param name="maxErrors" value="50"/>
 </designrules>
@@ -1835,10 +1841,10 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="16.99" y1="12.065" x2="18.61170625" y2="12.065" width="0.254" layer="1"/>
 <wire x1="18.61170625" y1="12.065" x2="19.1714" y2="11.50530625" width="0.254" layer="1"/>
 <wire x1="19.1714" y1="11.50530625" x2="19.1714" y2="8.3" width="0.254" layer="1"/>
-<wire x1="19.1714" y1="8.3" x2="19.1714" y2="2.50530625" width="0.254" layer="1"/>
-<wire x1="19.1714" y1="2.50530625" x2="20.20530625" y2="1.4714" width="0.254" layer="1"/>
-<wire x1="20.20530625" y1="1.4714" x2="43.29469375" y2="1.4714" width="0.254" layer="1"/>
-<wire x1="43.29469375" y1="1.4714" x2="46.2286" y2="4.40530625" width="0.254" layer="1"/>
+<wire x1="19.1714" y1="8.3" x2="19.1714" y2="3.00530625" width="0.254" layer="1"/>
+<wire x1="19.1714" y1="3.00530625" x2="20.20530625" y2="1.9714" width="0.254" layer="1"/>
+<wire x1="20.20530625" y1="1.9714" x2="43.83469375" y2="1.9714" width="0.254" layer="1"/>
+<wire x1="43.83469375" y1="1.9714" x2="46.2286" y2="4.40530625" width="0.254" layer="1"/>
 <wire x1="46.2286" y1="4.40530625" x2="46.2286" y2="9.70530625" width="0.254" layer="1"/>
 <wire x1="46.2286" y1="9.70530625" x2="48.29469375" y2="11.7714" width="0.254" layer="1"/>
 <wire x1="48.29469375" y1="11.7714" x2="50.59469375" y2="11.7714" width="0.254" layer="1"/>
@@ -1857,10 +1863,10 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="16.99" y1="13.335" x2="17.98829375" y2="13.335" width="0.254" layer="1"/>
 <wire x1="17.98829375" y1="13.335" x2="19.6286" y2="11.69469375" width="0.254" layer="1"/>
 <wire x1="19.6286" y1="11.69469375" x2="19.6286" y2="8.2" width="0.254" layer="1"/>
-<wire x1="19.6286" y1="8.2" x2="19.6286" y2="2.69469375" width="0.254" layer="1"/>
-<wire x1="19.6286" y1="2.69469375" x2="20.39469375" y2="1.9286" width="0.254" layer="1"/>
-<wire x1="20.39469375" y1="1.9286" x2="43.10530625" y2="1.9286" width="0.254" layer="1"/>
-<wire x1="43.10530625" y1="1.9286" x2="45.7714" y2="4.59469375" width="0.254" layer="1"/>
+<wire x1="19.6286" y1="8.2" x2="19.6286" y2="3.19469375" width="0.254" layer="1"/>
+<wire x1="19.6286" y1="3.19469375" x2="20.39469375" y2="2.4286" width="0.254" layer="1"/>
+<wire x1="20.39469375" y1="2.4286" x2="43.58530625" y2="2.4286" width="0.254" layer="1"/>
+<wire x1="43.58530625" y1="2.4286" x2="45.7714" y2="4.59469375" width="0.254" layer="1"/>
 <wire x1="45.7714" y1="4.59469375" x2="45.7714" y2="9.89469375" width="0.254" layer="1"/>
 <wire x1="45.7714" y1="9.89469375" x2="48.10530625" y2="12.2286" width="0.254" layer="1"/>
 <wire x1="48.10530625" y1="12.2286" x2="50.40530625" y2="12.2286" width="0.254" layer="1"/>
