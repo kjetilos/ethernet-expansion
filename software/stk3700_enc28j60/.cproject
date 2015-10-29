@@ -55,6 +55,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/portable/GCC/ARM_CM3}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<inputType id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.input.1504051445" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -77,6 +78,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.as.def.symbols.603392839" name="Defined symbols (-D)" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.as.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="EFM32GG990F1024=1"/>
@@ -153,6 +155,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<inputType id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.input.150534058" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -174,6 +177,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.as.def.symbols.602042321" name="Defined symbols (-D)" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.as.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="EFM32GG990F1024=1"/>
@@ -261,6 +265,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<option id="iar.arm.toolchain.compiler.option.defines.v5.4.0.1211038660" name="Defined Symbols:" superClass="iar.arm.toolchain.compiler.option.defines.v5.4.0" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_EFM=1"/>
@@ -284,6 +289,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<option id="iar.arm.toolchain.assembler.option.definedSymbols.v5.4.0.1879862777" name="Defined symbols:" superClass="iar.arm.toolchain.assembler.option.definedSymbols.v5.4.0" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="EFM32GG990F1024=1"/>
@@ -369,6 +375,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<option id="iar.arm.toolchain.compiler.option.defines.v5.4.0.599973936" name="Defined Symbols:" superClass="iar.arm.toolchain.compiler.option.defines.v5.4.0" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_EFM=1"/>
@@ -392,6 +399,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip-contrib/ports/efm32}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/lwIP/lwip/src/include/ipv4}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STK3700_enc28j60/board/stk3700}&quot;"/>
 								</option>
 								<option id="iar.arm.toolchain.assembler.option.definedSymbols.v5.4.0.1425858352" name="Defined symbols:" superClass="iar.arm.toolchain.assembler.option.definedSymbols.v5.4.0" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="EFM32GG990F1024=1"/>

@@ -1,8 +1,6 @@
 /*
- * stk3700_bsp.c
- *
- *  Created on: 23. okt. 2015
- *      Author: kjostera
+ * This is the board specific code for running the project on a Giant Gecko
+ * Starter Kit - STK3700
  */
 
 #include "enc28j60_bsp.h"
