@@ -129,6 +129,7 @@ err_t enc28j60_driver_init(struct netif *netif)
 err_t enc28j60_driver_output(struct netif *netif, struct pbuf *p)
 {
   struct eth_hdr *ethhdr = p->payload;
+  uint32_t offset = 0;
 
   EFM_ASSERT(netif != NULL);
   EFM_ASSERT(p != NULL);
@@ -137,10 +138,14 @@ err_t enc28j60_driver_output(struct netif *netif, struct pbuf *p)
   sys_mutex_lock(&enc28j60_mutex);
   /* Tx must be done with interrupts disabled */
   INT_Disable();
-  /* Check for LwIP chained buffers */
-  /* Figure out how to support linked packets */
-  EFM_ASSERT(p->next == NULL);
-  ENC28J60_Transmit(p->payload, p->len);
+
+  while (p != NULL)
+  {
+    ENC28J60_WriteFrameData(offset, p->payload, p->len);
+    offset += p->len;
+    p = p->next;
+  }
+  ENC28J60_Transmit();
   INT_Enable();
   sys_mutex_unlock(&enc28j60_mutex);
   

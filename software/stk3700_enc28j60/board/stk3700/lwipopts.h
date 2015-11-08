@@ -119,8 +119,9 @@
 #define TCPIP_THREAD_STACKSIZE          256
 
 /* UDP options */
-#define LWIP_UDP                        0
+#define LWIP_UDP                        1
 #define LWIP_UDPLITE                    0
+#define DEFAULT_UDP_RECVMBOX_SIZE       8
 
 #define TCP_MSS                         1460              /* Standard for Ethernet */
 
@@ -131,10 +132,10 @@
 #define LWIP_HAVE_LOOPIF                0
 
 /* Sequential layer options */
-#define LWIP_NETCONN                    0
+#define LWIP_NETCONN                    1
 
 /* Socket options */
-#define LWIP_SOCKET                     0
+#define LWIP_SOCKET                     1
 
 /* Statistics options */
 #define LWIP_STATS                      0

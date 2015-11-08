@@ -393,18 +393,33 @@ void ENC28J60_Init(const ENC28J60_Config * config)
   DEBUG_Print("link is up\n");
 }
 
-void ENC28J60_Transmit(const uint8_t * buffer, uint32_t len)
+void ENC28J60_WriteFrameData(uint32_t offset, const uint8_t * buffer, uint32_t len)
 {
   uint16_t start = TX_BUFFER_START;
   uint8_t control = 0x00;
 
-  WriteRegisterWord(ETXSTL, start);
-  WriteRegisterWord(EWRPTL, start);
+  if (offset == 0)
+  {
+    /* Start frame with control byte */
+    WriteRegisterWord(EWRPTL, start);
+    WriteBufferMemory(&control, sizeof(control));
+  }
+  else
+  {
+    WriteRegisterWord(EWRPTL, start + offset + 1);
+  }
 
-  WriteBufferMemory(&control, sizeof(control));
   WriteBufferMemory(buffer, len);
+}
 
-  uint16_t end = start + len;
+void ENC28J60_Transmit()
+{
+  uint16_t start = TX_BUFFER_START;
+  uint16_t end;
+
+  end = ReadRegisterWord(EWRPTL);
+
+  WriteRegisterWord(ETXSTL, start);
   WriteRegisterWord(ETXNDL, end);
 
   DEBUG_Print("Transmit %d bytes ETXST=0x%04X ETXNDL=0x%04X\n", len, start, end);
@@ -414,7 +429,6 @@ void ENC28J60_Transmit(const uint8_t * buffer, uint32_t len)
     ;
   DEBUG_Print("Transmit complete\n");
 }
-
 
 uint32_t ENC28J60_Receive(uint8_t * buffer, uint32_t len)
 {

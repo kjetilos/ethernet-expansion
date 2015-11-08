@@ -127,6 +127,35 @@ err_t sys_mbox_trypost( sys_mbox_t *pxMailBox, void *pxMessageToPost )
   return xReturn;
 }
 
+/*---------------------------------------------------------------------------*
+ * Routine:  sys_arch_mbox_tryfetch
+ *---------------------------------------------------------------------------*
+ * Wait for a new message to arrive in the mbox
+ * @param mbox mbox to get a message from
+ * @param msg pointer where the message is stored
+ * @param timeout maximum time (in milliseconds) to wait for a message
+ * @return 0 (milliseconds) if a message has been received
+ *         or SYS_MBOX_EMPTY if the mailbox is empty
+ *---------------------------------------------------------------------------*/
+u32_t sys_arch_mbox_tryfetch(sys_mbox_t *mbox, void **msg)
+{
+  void *dummyptr;
+
+  if (msg == NULL)
+  {
+    msg = &dummyptr;
+  }
+
+  if (pdTRUE == xQueueReceive(*mbox, &(*msg), ( portTickType )0))
+  {
+    return 0;
+  }
+  else
+  {
+    return SYS_MBOX_EMPTY;
+  }
+}
+
 int sys_mbox_valid(sys_mbox_t *mbox)
 {
   return (*mbox == NULL) ? 0 : 1;
@@ -282,7 +311,7 @@ sys_thread_t sys_thread_new( const char *pcName, void( *pxThread )( void *pvPara
   portBASE_TYPE xResult;
   sys_thread_t xReturn;
 
-  xResult = xTaskCreate( pxThread, ( signed char * ) pcName, iStackSize, pvArg, iPriority, &xCreatedTask );
+  xResult = xTaskCreate(pxThread, pcName, (uint16_t) iStackSize, pvArg, iPriority, &xCreatedTask);
 
   if( xResult == pdPASS )
   {
@@ -295,3 +324,129 @@ sys_thread_t sys_thread_new( const char *pcName, void( *pxThread )( void *pvPara
 
   return xReturn;
 }
+
+int sys_sem_valid(sys_sem_t *sem)
+{
+  return (*sem == NULL) ? 0 : 1;
+}
+
+void sys_sem_set_invalid(sys_sem_t *sem)
+{
+  *sem = NULL;
+}
+
+/*---------------------------------------------------------------------------*
+ * Routine:  sys_sem_new
+ *---------------------------------------------------------------------------*
+ * Create a new semaphore
+ * @param sem pointer to the semaphore to create
+ * @param count initial count of the semaphore
+ * @return ERR_OK if successful, another err_t otherwise
+ *---------------------------------------------------------------------------*/
+err_t sys_sem_new(sys_sem_t *sem, u8_t count)
+{
+  portENTER_CRITICAL();
+  vSemaphoreCreateBinary(*sem);
+
+  if (count == 0) {
+    xSemaphoreTake(*sem, 1);
+  }
+  portEXIT_CRITICAL();
+
+  if(*sem != NULL ){
+#if SYS_STATS
+    SYS_STATS_INC(sem.used);
+#endif
+    return ERR_OK;
+  } else {
+#if SYS_STATS
+    SYS_STATS_INC(sem.err);
+#endif
+    return ERR_MEM;
+  }
+}
+
+/*---------------------------------------------------------------------------*
+ * Routine:  sys_arch_sem_wait
+ *---------------------------------------------------------------------------*
+ * Wait for a semaphore for the specified timeout
+ * @param sem the semaphore to wait for
+ * @param timeout timeout in milliseconds to wait (0 = wait forever)
+ * @return time (in milliseconds) waited for the semaphore
+ *         or SYS_ARCH_TIMEOUT on timeout
+ *---------------------------------------------------------------------------*/
+u32_t sys_arch_sem_wait(sys_sem_t *sem, u32_t timeout)
+{
+  portTickType StartTime, EndTime;
+  u32_t Elapsed;
+
+  StartTime = xTaskGetTickCount();
+
+  if (timeout != 0)
+  {
+    if ( xSemaphoreTake( *sem, timeout/portTICK_RATE_MS ) == pdTRUE) // TODO: Define a proper macro to count ms
+    {
+      // Return time blocked.
+      EndTime = xTaskGetTickCount();
+      Elapsed = portTICK_RATE_MS*(EndTime - StartTime); // TODO: Define a proper macro to count ms
+      if (Elapsed == 0)
+      {
+        Elapsed = 1*portTICK_RATE_MS;
+      }
+      return (Elapsed);
+    }
+    else
+    {
+      // Timed out
+      return SYS_ARCH_TIMEOUT;
+    }
+  }
+  else
+  {
+    // must block without a timeout
+    if (xSemaphoreTake( *sem, portMAX_DELAY ) != pdTRUE)
+    {
+#if SYS_STATS
+      SYS_STATS_INC(sem.err);
+#endif /* SYS_STATS */
+    }
+
+    // Return time blocked.
+    EndTime = xTaskGetTickCount();
+    Elapsed = portTICK_RATE_MS*(EndTime - StartTime);// TODO: Define a proper macro to count ms
+    if (Elapsed == 0)
+    {
+      Elapsed = portTICK_RATE_MS*1;
+    }
+
+    // return time blocked
+    return (Elapsed);
+  }
+}
+
+/*---------------------------------------------------------------------------*
+ * Routine:  sys_sem_signal
+ *---------------------------------------------------------------------------*
+ * Signals a semaphore
+ * @param sem the semaphore to signal
+ *---------------------------------------------------------------------------*/
+void sys_sem_signal(sys_sem_t * sem)
+{
+  xSemaphoreGive(*sem);
+}
+
+/*---------------------------------------------------------------------------*
+ * Routine:  sys_sem_free
+ *---------------------------------------------------------------------------*
+ * Delete a semaphore
+ * @param sem semaphore to delete
+ *---------------------------------------------------------------------------*/
+void sys_sem_free(sys_sem_t * sem)
+{
+#if SYS_STATS
+  SYS_STATS_DEC(sem.used);
+#endif /* SYS_STATS */
+
+  vSemaphoreDelete(*sem);
+}
+

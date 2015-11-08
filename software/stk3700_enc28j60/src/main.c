@@ -1,19 +1,3 @@
-/**************************************************************************//**
- * @file
- * @brief Energy Mode demo for EFM32ZG_STK3200
- * @brief Demo for energy mode current consumption testing.
- * @version 3.20.12
- ******************************************************************************
- * @section License
- * <b>(C) Copyright 2014 Silicon Labs, http://www.silabs.com</b>
- *******************************************************************************
- *
- * This file is licensed under the Silabs License Agreement. See the file
- * "Silabs_License_Agreement.txt" for details. Before using this software for
- * any purpose, you must agree to the terms of that agreement.
- *
- ******************************************************************************/
-
 #include "em_device.h"
 #include "em_chip.h"
 #include "em_cmu.h"
@@ -30,6 +14,7 @@
 #include <lwip/ip_addr.h>
 #include <lwip/timers.h>
 #include <lwip/tcpip.h>
+#include <lwip/sockets.h>
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -38,33 +23,11 @@ static void GpioSetup( void );
 #define STACK_SIZE_FOR_TASK    (256)
 #define TASK_PRIORITY          (tskIDLE_PRIORITY + 1)
 
-/* Structure with parameters for LedBlink */
-typedef struct
-{
-  /* Delay between blink of led */
-  portTickType delay;
-  /* Number of led */
-  int          ledNo;
-} TaskParams_t;
-
-
-//#define RX_BUFFER_SIZE   512
-
-//static uint8_t rxBuffer[RX_BUFFER_SIZE] = {0};
-//static uint8_t txBuffer[] = {
-//  0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-//  0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-//  0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-//  0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-//};
+static void udpTask(void *unused);
 
 /* 00:0B:57:33:EF:78 */
 static const uint8_t macAddress[] = {0x00, 0x0B, 0x57, 0x33, 0xEF, 0x78};
 static struct netif en0 = {0};
-
-void Delay(uint32_t dlyTicks)
-{
-}
 
 /* The prototype shows it is a naked function - in effect this is just an
 assembly function. */
@@ -74,46 +37,46 @@ void HardFault_Handler( void ) __attribute__( ( naked ) );
 prvGetRegistersFromStack(). */
 void HardFault_Handler(void)
 {
-    __asm volatile
-    (
-        " tst lr, #4                                                \n"
-        " ite eq                                                    \n"
-        " mrseq r0, msp                                             \n"
-        " mrsne r0, psp                                             \n"
-        " ldr r1, [r0, #24]                                         \n"
-        " ldr r2, handler2_address_const                            \n"
-        " bx r2                                                     \n"
-        " handler2_address_const: .word prvGetRegistersFromStack    \n"
-    );
+  __asm volatile
+  (
+    " tst lr, #4                                                \n"
+    " ite eq                                                    \n"
+    " mrseq r0, msp                                             \n"
+    " mrsne r0, psp                                             \n"
+    " ldr r1, [r0, #24]                                         \n"
+    " ldr r2, handler2_address_const                            \n"
+    " bx r2                                                     \n"
+    " handler2_address_const: .word prvGetRegistersFromStack    \n"
+  );
 }
 
 void prvGetRegistersFromStack( uint32_t *pulFaultStackAddress )
 {
-/* These are volatile to try and prevent the compiler/linker optimising them
-away as the variables never actually get used.  If the debugger won't show the
-values of the variables, make them global my moving their declaration outside
-of this function. */
-volatile uint32_t r0;
-volatile uint32_t r1;
-volatile uint32_t r2;
-volatile uint32_t r3;
-volatile uint32_t r12;
-volatile uint32_t lr; /* Link register. */
-volatile uint32_t pc; /* Program counter. */
-volatile uint32_t psr;/* Program status register. */
+  /* These are volatile to try and prevent the compiler/linker optimising them
+  away as the variables never actually get used.  If the debugger won't show the
+  values of the variables, make them global my moving their declaration outside
+  of this function. */
+  volatile uint32_t r0;
+  volatile uint32_t r1;
+  volatile uint32_t r2;
+  volatile uint32_t r3;
+  volatile uint32_t r12;
+  volatile uint32_t lr; /* Link register. */
+  volatile uint32_t pc; /* Program counter. */
+  volatile uint32_t psr;/* Program status register. */
 
-    r0 = pulFaultStackAddress[ 0 ];
-    r1 = pulFaultStackAddress[ 1 ];
-    r2 = pulFaultStackAddress[ 2 ];
-    r3 = pulFaultStackAddress[ 3 ];
+  r0 = pulFaultStackAddress[ 0 ];
+  r1 = pulFaultStackAddress[ 1 ];
+  r2 = pulFaultStackAddress[ 2 ];
+  r3 = pulFaultStackAddress[ 3 ];
 
-    r12 = pulFaultStackAddress[ 4 ];
-    lr = pulFaultStackAddress[ 5 ];
-    pc = pulFaultStackAddress[ 6 ];
-    psr = pulFaultStackAddress[ 7 ];
+  r12 = pulFaultStackAddress[ 4 ];
+  lr = pulFaultStackAddress[ 5 ];
+  pc = pulFaultStackAddress[ 6 ];
+  psr = pulFaultStackAddress[ 7 ];
 
-    /* When the following line is hit, the variables contain the register values. */
-    for( ;; );
+  /* When the following line is hit, the variables contain the register values. */
+  for( ;; );
 }
 
 /**************************************************************************//**
@@ -141,11 +104,49 @@ static void ethernetTask(void *unused)
   netif_set_default(&en0);
   netif_set_up(&en0);
 
+  xTaskCreate(udpTask, (const char *) "UdpTask", STACK_SIZE_FOR_TASK, NULL, TASK_PRIORITY, NULL);
+
   while (true)
   {
     enc28j60_driver_input(&en0);
+    vTaskDelay(10);
 //    sys_check_timeouts();
   }
+}
+
+#define BUFFER_SIZE 64
+static uint8_t buffer[BUFFER_SIZE];
+
+static void udpTask(void *unused)
+{
+  int ret;
+  struct sockaddr_in sockaddr = {0};
+  struct sockaddr_in remote = {0};
+  socklen_t addrlen;
+  int n;
+  int sd = socket(PF_INET, SOCK_DGRAM, 0);
+  EFM_ASSERT(sd >= 0);
+  sockaddr.sin_family = AF_INET;
+  sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+  sockaddr.sin_port = htons(1234);
+
+  ret = bind(sd, &sockaddr, sizeof(sockaddr));
+  EFM_ASSERT(ret >= 0);
+
+  while (true)
+  {
+    addrlen = sizeof(struct sockaddr_in);
+    n = recvfrom(sd, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&remote, &addrlen);
+    if (n < 0)
+    {
+      EFM_ASSERT(false);
+    }
+    else
+    {
+      sendto(sd, buffer, n, 0, (struct sockaddr *)&remote, addrlen);
+    }
+  }
+  close(sd);
 }
 
 /**
