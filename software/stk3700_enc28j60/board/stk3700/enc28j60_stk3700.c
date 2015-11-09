@@ -9,6 +9,8 @@
 #include "em_device.h"
 #include "em_usart.h"
 #include "em_gpio.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 #include <stdint.h>
 
@@ -88,4 +90,9 @@ void BSP_ChipOn(void)
 void BSP_ChipOff(void)
 {
   GPIO_PinOutSet(SPI_CS_PORT, SPI_CS_PIN);
+}
+
+void BSP_Delay(uint32_t ms)
+{
+  vTaskDelay(ms);
 }

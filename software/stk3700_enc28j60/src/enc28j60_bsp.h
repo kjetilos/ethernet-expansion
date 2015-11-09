@@ -19,3 +19,8 @@ void BSP_ChipOn(void);
  * @brief De-Activate the chip by pulling the chip select line high
  */
 void BSP_ChipOff(void);
+
+/**
+ * @brief Wait for ms milliseconds
+ */
+void BSP_Delay(uint32_t ms);

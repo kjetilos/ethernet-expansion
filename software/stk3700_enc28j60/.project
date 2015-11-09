@@ -46,6 +46,11 @@
 			<locationURI>STUDIO_SDK_LOC/kits/common/bsp/bsp_trace.c</locationURI>
 		</link>
 		<link>
+			<name>BSP/segmentlcd.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/kits/common/drivers/segmentlcd.c</locationURI>
+		</link>
+		<link>
 			<name>emlib/em_assert.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/emlib/src/em_assert.c</locationURI>
@@ -74,6 +79,11 @@
 			<name>emlib/em_int.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/emlib/src/em_int.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_lcd.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/emlib/src/em_lcd.c</locationURI>
 		</link>
 		<link>
 			<name>emlib/em_system.c</name>

@@ -310,7 +310,7 @@ void ENC28J60_Init(const ENC28J60_Config * config)
   ENC28J60_SoftReset();
 
   /* Wait for Oscillator Start-up Timer */
-  Delay(200);
+  BSP_Delay(200);
   // TODO: The Errata document says that the Oscillator flag is not reliable
   //       we must wait for 1ms instead
 

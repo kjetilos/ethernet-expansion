@@ -143,6 +143,7 @@ static void udpTask(void *unused)
     }
     else
     {
+      BSP_DisplayWrite(buffer);
       sendto(sd, buffer, n, 0, (struct sockaddr *)&remote, addrlen);
     }
   }
@@ -175,6 +176,8 @@ int main(void)
   GpioSetup();
 
   BSP_LedsInit();
+  BSP_DisplayInit();
+  BSP_DisplayWrite("Hello");
 
   /*Create two task for blinking leds*/
   xTaskCreate(ethernetTask, (const char *) "EthernetTask", STACK_SIZE_FOR_TASK, NULL, TASK_PRIORITY, NULL);
