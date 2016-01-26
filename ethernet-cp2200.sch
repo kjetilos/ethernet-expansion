@@ -8395,6 +8395,21 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="202,1,7.62,63.5,IC1G$1,A0,,,,"/>
+<approved hash="202,1,7.62,60.96,IC1G$1,A1,,,,"/>
+<approved hash="202,1,7.62,58.42,IC1G$1,A2,,,,"/>
+<approved hash="202,1,7.62,53.34,IC1G$1,A4,,,,"/>
+<approved hash="202,1,7.62,50.8,IC1G$1,A5,,,,"/>
+<approved hash="202,1,7.62,48.26,IC1G$1,A6,,,,"/>
+<approved hash="202,1,7.62,45.72,IC1G$1,A7,,,,"/>
+<approved hash="104,1,10.16,121.92,IC1A,AV+,+3V3,,,"/>
+<approved hash="104,1,10.16,116.84,IC1A,VDD1,+3V3,,,"/>
+<approved hash="104,1,10.16,111.76,IC1A,VDD2,+3V3,,,"/>
+<approved hash="104,1,40.64,111.76,IC1A,DGND2,GND,,,"/>
+<approved hash="104,1,40.64,116.84,IC1A,DGND1,GND,,,"/>
+<approved hash="104,1,40.64,121.92,IC1A,AGND,GND,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
