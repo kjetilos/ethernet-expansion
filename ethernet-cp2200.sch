@@ -7955,7 +7955,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <instance part="C1" gate="G$1" x="53.34" y="27.94"/>
 <instance part="C2" gate="G$1" x="63.5" y="27.94"/>
 <instance part="GND4" gate="1" x="53.34" y="20.32"/>
-<instance part="JP1" gate="A" x="-35.56" y="76.2"/>
+<instance part="JP1" gate="A" x="-35.56" y="78.74"/>
 <instance part="+3V4" gate="G$1" x="-20.32" y="63.5" rot="R270"/>
 <instance part="GND8" gate="1" x="-58.42" y="81.28"/>
 <instance part="RJ1" gate="G$1" x="167.64" y="73.66"/>
@@ -7965,10 +7965,10 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <instance part="C8" gate="G$1" x="-22.86" y="111.76"/>
 <instance part="C9" gate="G$1" x="-15.24" y="111.76"/>
 <instance part="C10" gate="G$1" x="-7.62" y="111.76"/>
-<instance part="GND11" gate="1" x="-30.48" y="104.14"/>
-<instance part="GND12" gate="1" x="-22.86" y="104.14"/>
-<instance part="GND13" gate="1" x="-15.24" y="104.14"/>
-<instance part="GND14" gate="1" x="-7.62" y="104.14"/>
+<instance part="GND11" gate="1" x="-30.48" y="101.6"/>
+<instance part="GND12" gate="1" x="-22.86" y="101.6"/>
+<instance part="GND13" gate="1" x="-15.24" y="101.6"/>
+<instance part="GND14" gate="1" x="-7.62" y="101.6"/>
 <instance part="GND15" gate="1" x="81.28" y="88.9"/>
 <instance part="R7" gate="G$1" x="50.8" y="35.56" rot="R90"/>
 <instance part="GND3" gate="1" x="63.5" y="20.32"/>
@@ -7982,7 +7982,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <instance part="GND7" gate="1" x="93.98" y="58.42"/>
 <instance part="IC1" gate="G$1" x="27.94" y="60.96"/>
 <instance part="IC1" gate="A" x="25.4" y="116.84"/>
-<instance part="GND16" gate="1" x="43.18" y="106.68"/>
+<instance part="GND16" gate="1" x="43.18" y="104.14"/>
 <instance part="+3V3" gate="G$1" x="2.54" y="106.68"/>
 <instance part="R2" gate="G$1" x="2.54" y="96.52" rot="R90"/>
 </instances>
@@ -7992,7 +7992,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <net name="+3V3" class="0">
 <segment>
 <pinref part="JP1" gate="A" pin="20"/>
-<wire x1="-30.48" y1="63.5" x2="-22.86" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="66.04" x2="-22.86" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
 </segment>
 <segment>
@@ -8060,18 +8060,22 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <segment>
 <pinref part="C7" gate="G$1" pin="2"/>
 <pinref part="GND11" gate="1" pin="GND"/>
+<wire x1="-30.48" y1="104.14" x2="-30.48" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C8" gate="G$1" pin="2"/>
 <pinref part="GND12" gate="1" pin="GND"/>
+<wire x1="-22.86" y1="104.14" x2="-22.86" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C9" gate="G$1" pin="2"/>
 <pinref part="GND13" gate="1" pin="GND"/>
+<wire x1="-15.24" y1="104.14" x2="-15.24" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C10" gate="G$1" pin="2"/>
 <pinref part="GND14" gate="1" pin="GND"/>
+<wire x1="-7.62" y1="104.14" x2="-7.62" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="RJ1" gate="G$1" pin="GND"/>
@@ -8081,7 +8085,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <segment>
 <pinref part="JP1" gate="A" pin="1"/>
 <pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="-38.1" y1="86.36" x2="-58.42" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="-38.1" y1="88.9" x2="-58.42" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="-58.42" y1="86.36" x2="-58.42" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -8111,6 +8115,20 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <pinref part="C3" gate="G$1" pin="2"/>
 <junction x="78.74" y="63.5"/>
 <pinref part="GND1" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="A" pin="AGND"/>
+<wire x1="40.64" y1="121.92" x2="43.18" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="121.92" x2="43.18" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="A" pin="DGND1"/>
+<wire x1="43.18" y1="116.84" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="111.76" x2="43.18" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="116.84" x2="43.18" y2="116.84" width="0.1524" layer="91"/>
+<junction x="43.18" y="116.84"/>
+<pinref part="IC1" gate="A" pin="DGND2"/>
+<wire x1="40.64" y1="111.76" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
+<junction x="43.18" y="111.76"/>
+<pinref part="GND16" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -8161,17 +8179,11 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <pinref part="Q1" gate="G$1" pin="2"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="30.48" x2="63.5" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="33.02" x2="63.5" y2="30.48" width="0.1524" layer="91"/>
 <junction x="63.5" y="30.48"/>
 <wire x1="50.8" y1="40.64" x2="63.5" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="40.64" x2="63.5" y2="30.48" width="0.1524" layer="91"/>
 <junction x="50.8" y="40.64"/>
 <pinref part="IC1" gate="G$1" pin="XTAL1"/>
-</segment>
-</net>
-<net name="N$3" class="0">
-<segment>
-<wire x1="63.5" y1="25.4" x2="63.5" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -8255,80 +8267,13 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <junction x="86.36" y="71.12"/>
 </segment>
 </net>
-<net name="N$17" class="0">
-<segment>
-<pinref part="IC1" gate="A" pin="AGND"/>
-<wire x1="40.64" y1="121.92" x2="43.18" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="121.92" x2="43.18" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="A" pin="DGND1"/>
-<wire x1="43.18" y1="116.84" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="111.76" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="109.22" x2="43.18" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="116.84" x2="43.18" y2="116.84" width="0.1524" layer="91"/>
-<junction x="43.18" y="116.84"/>
-<pinref part="IC1" gate="A" pin="DGND2"/>
-<wire x1="40.64" y1="111.76" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
-<junction x="43.18" y="111.76"/>
-<pinref part="GND16" gate="1" pin="GND"/>
-<junction x="43.18" y="109.22"/>
-</segment>
-</net>
-<net name="N$16" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="2"/>
-<pinref part="IC1" gate="G$1" pin="D0/AD0"/>
-<wire x1="-30.48" y1="86.36" x2="7.62" y2="86.36" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$18" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="4"/>
-<wire x1="-30.48" y1="83.82" x2="7.62" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="D1/AD1"/>
-</segment>
-</net>
-<net name="N$19" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="6"/>
-<wire x1="-30.48" y1="81.28" x2="7.62" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="D2/AD2"/>
-</segment>
-</net>
-<net name="N$21" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="10"/>
-<wire x1="-30.48" y1="76.2" x2="7.62" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="D4/AD4"/>
-</segment>
-</net>
-<net name="N$22" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="12"/>
-<pinref part="IC1" gate="G$1" pin="D5/AD5"/>
-<wire x1="-30.48" y1="73.66" x2="7.62" y2="73.66" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$23" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="14"/>
-<wire x1="-30.48" y1="71.12" x2="7.62" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="D6/AD6"/>
-</segment>
-</net>
-<net name="N$24" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="16"/>
-<wire x1="-30.48" y1="68.58" x2="7.62" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="D7/AD7"/>
-</segment>
-</net>
 <net name="N$25" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="CS"/>
 <wire x1="7.62" y1="40.64" x2="-45.72" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="-45.72" y1="40.64" x2="-45.72" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="3"/>
-<wire x1="-45.72" y1="83.82" x2="-38.1" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="83.82" x2="-38.1" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -8337,7 +8282,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <wire x1="7.62" y1="38.1" x2="-48.26" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="-48.26" y1="38.1" x2="-48.26" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="5"/>
-<wire x1="-48.26" y1="81.28" x2="-38.1" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="-48.26" y1="81.28" x2="-38.1" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$27" class="0">
@@ -8346,7 +8291,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <wire x1="7.62" y1="35.56" x2="-50.8" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="-50.8" y1="35.56" x2="-50.8" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="7"/>
-<wire x1="-50.8" y1="78.74" x2="-38.1" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="78.74" x2="-38.1" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -8354,7 +8299,7 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <wire x1="7.62" y1="30.48" x2="-53.34" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-53.34" y1="30.48" x2="-53.34" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="A" pin="9"/>
-<wire x1="-53.34" y1="76.2" x2="-38.1" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="-53.34" y1="76.2" x2="-38.1" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="INT"/>
 </segment>
 </net>
@@ -8363,13 +8308,6 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <pinref part="IC1" gate="G$1" pin="RST"/>
 <pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="7.62" y1="91.44" x2="2.54" y2="91.44" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$20" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="8"/>
-<pinref part="IC1" gate="G$1" pin="D3/AD3"/>
-<wire x1="-30.48" y1="78.74" x2="7.62" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -8383,6 +8321,75 @@ The CP2200 has an IEEE 802.3 compliant 10 BASE-T Ethernet</description>
 <wire x1="48.26" y1="30.48" x2="50.8" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="XTAL2"/>
 <junction x="50.8" y="30.48"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="A3/ALE/AS"/>
+<wire x1="7.62" y1="55.88" x2="-43.18" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="-43.18" y1="55.88" x2="-43.18" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="A" pin="17"/>
+<wire x1="-43.18" y1="68.58" x2="-38.1" y2="68.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D0/AD0"/>
+<pinref part="JP1" gate="A" pin="4"/>
+<wire x1="7.62" y1="86.36" x2="-30.48" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D1/AD1"/>
+<pinref part="JP1" gate="A" pin="6"/>
+<wire x1="7.62" y1="83.82" x2="-30.48" y2="83.82" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D2/AD2"/>
+<pinref part="JP1" gate="A" pin="8"/>
+<wire x1="7.62" y1="81.28" x2="-30.48" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$19" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D3/AD3"/>
+<pinref part="JP1" gate="A" pin="10"/>
+<wire x1="7.62" y1="78.74" x2="-30.48" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$20" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D4/AD4"/>
+<pinref part="JP1" gate="A" pin="12"/>
+<wire x1="7.62" y1="76.2" x2="-30.48" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$21" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D5/AD5"/>
+<pinref part="JP1" gate="A" pin="14"/>
+<wire x1="7.62" y1="73.66" x2="-30.48" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$22" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D6/AD6"/>
+<pinref part="JP1" gate="A" pin="16"/>
+<wire x1="7.62" y1="71.12" x2="-30.48" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="D7/AD7"/>
+<wire x1="7.62" y1="68.58" x2="-17.78" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="68.58" x2="-17.78" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="58.42" x2="-55.88" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="-55.88" y1="58.42" x2="-55.88" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="A" pin="15"/>
+<wire x1="-55.88" y1="71.12" x2="-38.1" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
