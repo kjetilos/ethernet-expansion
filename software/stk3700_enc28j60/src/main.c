@@ -7,6 +7,7 @@
 #include "bsp.h"
 #include "enc28j60_driver.h"
 #include "enc28j60.h"
+#include "display_bsp.h"
 
 #include <FreeRTOS.h>
 #include <task.h>
@@ -130,7 +131,7 @@ static void udpTask(void *unused)
   sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
   sockaddr.sin_port = htons(1234);
 
-  ret = bind(sd, &sockaddr, sizeof(sockaddr));
+  ret = bind(sd, (struct sockaddr *)&sockaddr, sizeof(sockaddr));
   EFM_ASSERT(ret >= 0);
 
   while (true)
@@ -143,7 +144,7 @@ static void udpTask(void *unused)
     }
     else
     {
-      BSP_DisplayWrite(buffer);
+      BSP_DisplayWrite((char *)buffer);
       sendto(sd, buffer, n, 0, (struct sockaddr *)&remote, addrlen);
     }
   }

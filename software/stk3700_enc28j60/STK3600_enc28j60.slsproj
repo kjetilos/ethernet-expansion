@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="STK3600_enc28j60" boardCompatibility="brd2201a" partCompatibility=".*efm32lg990f256.*" toolchainCompatibility="" contentRoot=".">
+  <module id="com.silabs.sdk.exx32.board">
+    <exclude pattern=".*" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.CMSIS">
+    <exclude pattern=".*" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.emlib">
+    <exclude pattern=".*/em_int.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.bsp">
+    <include pattern="BSP/bsp_bcc.c" />
+    <include pattern="BSP/bsp_stk.c" />
+    <include pattern="BSP/bsp_stk_leds.c" />
+    <include pattern="BSP/bsp_trace.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.part">
+    <include pattern="CMSIS/.*/startup_.*_.*.s" />
+    <include pattern="CMSIS/.*/system_.*.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.drivers">
+    <include pattern="Drivers/segmentlcd.c" />
+  </module>
+
+  <macroDefinition name="DEBUG_EFM" languageCompatibility="c cpp" />
+
+  <module id="com.silabs.sdk.exx32.external.FreeRTOS">
+    <exclude pattern="FreeRTOS/Common.*" />
+    <!--exclude pattern=".*/heap_1.c" /-->
+    <exclude pattern=".*/heap_2.c" />
+    <exclude pattern=".*/heap_3.c" />
+    <exclude pattern=".*/heap_4.c" />
+    <exclude pattern=".*/heap_5.c" />
+  </module>
+
+  <includePath uri="lwIP/lwip/src/include" />
+  <includePath uri="lwIP/lwip/src/include/ipv4" />
+  <includePath uri="lwIP/lwip-contrib/ports/efm32" />
+  <includePath uri="lwIP/lwip-contrib/ports/efm32/include" />
+  <folder name="lwIP" uri="lwIP" />
+
+  <includePath uri="board/stk3600" />
+  <folder name="board/stk3600" uri="board/stk3600" />
+
+  <includePath uri="src" />
+  <folder name="src" uri="src" />
+</project>

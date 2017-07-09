@@ -80,7 +80,7 @@ void BSP_SpiInit(void)
 
 uint8_t BSP_SpiTransfer(uint8_t data)
 {
-  USART_SpiTransfer(USART1, data);
+  return USART_SpiTransfer(USART1, data);
 }
 
 void BSP_ChipOn(void)

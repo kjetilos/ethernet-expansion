@@ -51,7 +51,7 @@
 #include "lwip/stats.h"
 
 #include "em_device.h"
-#include "em_int.h"
+#include "em_core.h"
 #include "em_gpio.h"
 #include "bsp.h"
 #include "lwipopts.h"
@@ -128,6 +128,7 @@ err_t enc28j60_driver_init(struct netif *netif)
  *****************************************************************************/
 err_t enc28j60_driver_output(struct netif *netif, struct pbuf *p)
 {
+  CORE_DECLARE_IRQ_STATE;
   struct eth_hdr *ethhdr = p->payload;
   uint32_t offset = 0;
 
@@ -137,7 +138,7 @@ err_t enc28j60_driver_output(struct netif *netif, struct pbuf *p)
 
   sys_mutex_lock(&enc28j60_mutex);
   /* Tx must be done with interrupts disabled */
-  INT_Disable();
+  CORE_ENTER_CRITICAL();
 
   while (p != NULL)
   {
@@ -146,7 +147,7 @@ err_t enc28j60_driver_output(struct netif *netif, struct pbuf *p)
     p = p->next;
   }
   ENC28J60_Transmit();
-  INT_Enable();
+  CORE_EXIT_CRITICAL();
   sys_mutex_unlock(&enc28j60_mutex);
   
   LINK_STATS_INC(link.xmit);
