@@ -22,10 +22,12 @@
   <module id="com.silabs.sdk.exx32.common.drivers">
     <include pattern="Drivers/segmentlcd.c" />
     <include pattern="Drivers/retargetio.c" />
-    <include pattern="Drivers/retargetswo.c" />
+    <include pattern="Drivers/retargetserial.c" />
   </module>
 
   <macroDefinition name="DEBUG_EFM" languageCompatibility="c cpp" />
+  <macroDefinition name="RETARGET_UART0" />
+  <macroDefinition name="RETARGET_VCOM" />
 
   <module id="com.silabs.sdk.exx32.external.FreeRTOS">
     <exclude pattern="FreeRTOS/Common.*" />

@@ -8,7 +8,7 @@
 #include "enc28j60_driver.h"
 #include "enc28j60.h"
 #include "display_bsp.h"
-#include "retargetswo.h"
+#include "retargetserial.h"
 
 #include <FreeRTOS.h>
 #include <task.h>
@@ -181,7 +181,8 @@ int main(void)
   BSP_DisplayInit();
   BSP_DisplayWrite("Hello");
 
-  RETARGET_SwoInit();
+  RETARGET_SerialInit();
+  RETARGET_SerialCrLf(1);
   printf("enc28j60 debug output");
 
   /*Create two task for blinking leds*/
