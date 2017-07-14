@@ -21,6 +21,8 @@
   </module>
   <module id="com.silabs.sdk.exx32.common.drivers">
     <include pattern="Drivers/segmentlcd.c" />
+    <include pattern="Drivers/retargetio.c" />
+    <include pattern="Drivers/retargetswo.c" />
   </module>
 
   <macroDefinition name="DEBUG_EFM" languageCompatibility="c cpp" />

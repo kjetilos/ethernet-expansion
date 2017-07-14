@@ -8,6 +8,7 @@
 #include "enc28j60_driver.h"
 #include "enc28j60.h"
 #include "display_bsp.h"
+#include "retargetswo.h"
 
 #include <FreeRTOS.h>
 #include <task.h>
@@ -179,6 +180,9 @@ int main(void)
   BSP_LedsInit();
   BSP_DisplayInit();
   BSP_DisplayWrite("Hello");
+
+  RETARGET_SwoInit();
+  printf("enc28j60 debug output");
 
   /*Create two task for blinking leds*/
   xTaskCreate(ethernetTask, (const char *) "EthernetTask", STACK_SIZE_FOR_TASK, NULL, TASK_PRIORITY, NULL);

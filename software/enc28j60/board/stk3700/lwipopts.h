@@ -173,7 +173,8 @@
 #define LWIP_NETIF_STATUS_CALLBACK      1
 
 /* Debug options */
-//#define LWIP_DEBUG
+#define LWIP_DEBUG
+
 /*
  * Only messages that have a level that is greater than or equal to
  * LWIP_DBG_MIN_LEVEL are printed to the console.
@@ -186,8 +187,7 @@
  */
 #define LWIP_DBG_MIN_LEVEL              LWIP_DBG_LEVEL_WARNING
 
-
-#define LWIP_GLOB_DEBUG                 LWIP_DBG_OFF
+#define LWIP_GLOB_DEBUG                 LWIP_DBG_ON
 /**
  * LWIP_DBG_TYPES_ON can be used to globally enable debug messages
  * of a certain type. There are 3 types that are defined:
